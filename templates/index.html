@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+<title>Resto</title>
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+<div class="items">
+{% for item in menu %}
+<div class="item">
+    <button class="btn" type="submit" value={{item.id}}>
+        <img class="itempic" src="{{item.path}}"}>
+        {{item.name}} {{item.price}} $</button>
+</div>
+{% endfor %}
+</div>
+<script>
+
+</script>
+{% endblock %}
