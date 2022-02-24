@@ -1,3 +1,5 @@
 Flask
 CS50
 Flask-Session
+cryptography
+hashlib

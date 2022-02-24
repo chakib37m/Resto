@@ -2,22 +2,36 @@
 
 <title>Resto</title>
 
+
 {% block head %}
 
 
 {% endblock %}
 
 {% block body %}
-<div class="items">
-{% for item in menu %}
-<div class="item">
-    <button class="btn" type="submit" value={{item.id}}>
-        <img class="itempic" src="{{item.path}}"}>
-        {{item.name}} {{item.price}} $</button>
-</div>
+<ul class="items">
+    {% for item in menu %}
+    <li value={{item.id}} class="item">
+            <img class="itempic" src="{{item.path}}"}>
+            {{item.name}} {{item.price}} $
+    </li>
 {% endfor %}
-</div>
+</ul>
 <script>
+    document.addEventListener("DOMContentLoaded", async function(){
+        let cart = new Array;
+        let items = document.querySelectorAll('.item');
+        items.forEach((item) => {
+            item.addEventListener('click', async function(){
+                console.log(item.value);
+                cart.push(await fetch('/cart?id=' + item.value))
+                console.log(cart);
+            })
+        })
+
+
+        console.log(cart)
+    });
 
 </script>
 {% endblock %}

@@ -1,6 +1,6 @@
 :root{
-    --primary: white;
-    --secondary: #269131;
+    --primary: rgb(0, 11, 24);
+    --secondary: #f81c1c;
 }
 header{
     display: grid;
@@ -18,12 +18,15 @@ header{
 
 .item{
     display: inline;
-    height: fit-content;
+    height: 4em;
     margin : 0.3em;
+    font-size: larger;
+}
+.item:hover{
     border: 5px solid var(--secondary);
 }
 .itempic{
-    height: 2em;
+    height: 3.5em;
     width: auto;
     float: left;
     top: 0px;

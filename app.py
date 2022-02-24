@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, session
+from flask import Flask, render_template, redirect, request, session, jsonify
 from cs50 import SQL
 from flask_session import Session
 from hashlib import sha256
@@ -44,10 +44,11 @@ def login():
     id = db.execute('SELECT id FROM customers WHERE email=? and password=?', email, password)
     session[id] = id
     return redirect('/')
-@app.route("/cart", methods=["POST"])
+@app.route("/cart")
 def cart():
-    return id
-
+    item = db.execute('SELECT * FROM menu WHERE id = ?', request.args.get("id"))
+    return jsonify(item)
 @app.route("/order", methods=["POST"])
 def order():
     return id
+
